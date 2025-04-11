@@ -26,7 +26,11 @@ public class BasePage {
     }
 
     public Boolean isVisible(By locator){
-        return getElement(locator).isDisplayed();
+        try {
+            return getElement(locator).isDisplayed();
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public String getElementText(By locator){
