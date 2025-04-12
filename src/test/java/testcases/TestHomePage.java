@@ -1,5 +1,6 @@
 package testcases;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,11 +17,14 @@ public class TestHomePage extends DriverSetup {
 
     @Test
     public void TestHomePageTitle(){
+        homePage.addScreenshot("Home Page");
         Assert.assertEquals(getDriver().getTitle(), homePage.title);
     }
 
-    @Test
+    @Test(description = "Test Login-Signup button on the Home page")
+    @Description("Allure Description TestLogin-Signup button")
     public void TestLoginSignupButton(){
+        homePage.addScreenshot("Home Page");
         homePage.clickOnElement(homePage.login_signup_btn);
         Assert.assertFalse(getDriver().getCurrentUrl().equals(homePage.url));
     }

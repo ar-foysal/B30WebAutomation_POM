@@ -17,13 +17,16 @@ public class TestLoginPage extends DriverSetup {
     public  void setup_class(){
         homePage.loadHomePage();
         homePage.clickOnElement(homePage.login_signup_btn);
+        homePage.addScreenshot("Login page");
     }
 
     @Test
     public void testLoginWithValidCredentials(){
+
         loginPage.writeOnElement(loginPage.email_input_box, "feciwe6718@anlocc.com");
         loginPage.writeOnElement(loginPage.password_input_box, "1234567Aa");
         loginPage.clickOnElement(loginPage.login_btn);
+        homePage.addScreenshot("Login page");
         Assert.assertTrue(homePage.isVisible(homePage.logout_btn));
         Assert.assertFalse(loginPage.isVisible(loginPage.login_btn));
     }
@@ -32,6 +35,7 @@ public class TestLoginPage extends DriverSetup {
         loginPage.writeOnElement(loginPage.email_input_box, "feciwe6718@anlocc.com");
         loginPage.writeOnElement(loginPage.password_input_box, "Pass&Pas");
         loginPage.clickOnElement(loginPage.login_btn);
+        homePage.addScreenshot("Login page");
         Assert.assertEquals(loginPage.getElement(loginPage.error_msg).getText(), "Your email or password is incorrect!");
         Assert.assertTrue(loginPage.isVisible(loginPage.login_btn));
     }
@@ -41,6 +45,7 @@ public class TestLoginPage extends DriverSetup {
         loginPage.writeOnElement(loginPage.email_input_box, "feciwe6718@anlocc.co");
         loginPage.writeOnElement(loginPage.password_input_box, "Pass&Pas");
         loginPage.clickOnElement(loginPage.login_btn);
+        homePage.addScreenshot("Login page");
         Assert.assertEquals(loginPage.getElement(loginPage.error_msg).getText(), "Your email or password is incorrect!");
         Assert.assertTrue(loginPage.isVisible(loginPage.login_btn));
     }
@@ -50,6 +55,7 @@ public class TestLoginPage extends DriverSetup {
         loginPage.writeOnElement(loginPage.email_input_box, "feciwe6718@anlo.com");
         loginPage.writeOnElement(loginPage.password_input_box, "1234567Aa");
         loginPage.clickOnElement(loginPage.login_btn);
+        homePage.addScreenshot("Login page");
         Assert.assertEquals(loginPage.getElement(loginPage.error_msg).getText(), "Your email or password is incorrect!");
         Assert.assertTrue(loginPage.isVisible(loginPage.login_btn));
     }
@@ -59,6 +65,7 @@ public class TestLoginPage extends DriverSetup {
         loginPage.writeOnElement(loginPage.email_input_box, "");
         loginPage.writeOnElement(loginPage.password_input_box, "");
         loginPage.clickOnElement(loginPage.login_btn);
+        homePage.addScreenshot("Login page");
         Assert.assertEquals(loginPage.getAttributeValue(loginPage.email_input_box, "validationMessage"), "Please fill out this field.");
         Assert.assertTrue(loginPage.isVisible(loginPage.login_btn));
     }
@@ -68,6 +75,7 @@ public class TestLoginPage extends DriverSetup {
         loginPage.writeOnElement(loginPage.email_input_box, "feciwe6718@anlocc.com");
         loginPage.writeOnElement(loginPage.password_input_box, "");
         loginPage.clickOnElement(loginPage.login_btn);
+        homePage.addScreenshot("Login page");
         Assert.assertEquals(loginPage.getElement(loginPage.password_input_box).getAttribute("validationMessage"), "Please fill out this field.");
         Assert.assertTrue(loginPage.isVisible(loginPage.login_btn));
     }
